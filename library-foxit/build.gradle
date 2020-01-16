@@ -16,7 +16,7 @@ allprojects {
         google()
         jcenter()
         flatDir {
-            dirs '../'
+            dirs 'libs'
         }
     }
 }
@@ -46,7 +46,7 @@ android {
 }
 
 dependencies {
-    api files('libs/FoxitRDK.aar')
+    implementation(name: 'FoxitRDK', ext: 'aar')
 
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'com.edmodo:cropper:1.0.1'
@@ -62,43 +62,3 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
 }
 
-task clearAar(type: Delete){
-    delete '../FoxitRDKUIExtensions.aar'
-}
-
-task makeAar(type: Exec){
-    dependsOn(clearAar,build)
-    def fromFile = 'build/outputs/aar/'
-    def intoFile = '../'
-    if(org.gradle.internal.os.OperatingSystem.current().windows) {
-        commandLine "cmd",
-                '-/C', 'copy', file("$fromFile/uiextensions_src-release.aar").absolutePath, file("$intoFile/FoxitRDKUIExtensions.aar")
-    }else {
-        commandLine "cp",
-                file("$fromFile/uiextensions_src-release.aar").absolutePath, file("$intoFile/FoxitRDKUIExtensions.aar")
-    }
-}
-makeAar {}.dependsOn(clearAar, build)
-
-//uploadArchives {
-//    repositories.mavenDeployer {
-//        name = 'mavenCentralReleaseDeployer'
-//
-//
-//        pom.version = AARVERSION
-//        pom.artifactId = "foxit"
-//        pom.groupId = "com.pep.core.foxit"
-//        pom.name = "foxit"
-//        pom.packaging = 'aar'
-//
-//        if(pom.version.endsWith("-SNAPSHOT"))
-//        {
-//            repository(url: "http://192.168.186.4:8081/nexus/content/repositories/snapshots/") {
-//                authentication(userName: NAME, password: PASSWORD)}
-//        }
-//        else {
-//            repository(url: "http://192.168.186.4:8081/nexus/content/repositories/releases/") {
-//                authentication(userName: NAME, password: PASSWORD)}
-//        }
-//    }
-//}

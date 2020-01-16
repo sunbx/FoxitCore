@@ -1,2 +1,2 @@
-include ':app', ':library-foxit', ':library-rdk'
+include ':app', ':library-foxit'
 rootProject.name='FoxitCore'

@@ -46,7 +46,7 @@ android {
 }
 
 dependencies {
-    implementation(name: 'FoxitRDK', ext: 'aar')
+
 
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'com.edmodo:cropper:1.0.1'
@@ -60,5 +60,6 @@ dependencies {
 
     implementation 'org.jetbrains:annotations:13.0'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation(name: 'FoxitRDK', ext: 'aar')
 }
 

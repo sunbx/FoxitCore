@@ -60,6 +60,7 @@ dependencies {
 
     implementation 'org.jetbrains:annotations:13.0'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
-    implementation(name: 'FoxitRDK', ext: 'aar')
+    api project(path: ':library-rdk')
+
 }
 

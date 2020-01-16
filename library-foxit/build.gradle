@@ -29,7 +29,7 @@ android {
     buildToolsVersion "29.0.2"
 
     defaultConfig {
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 29
         versionCode 13
         versionName "7.0.0"
@@ -61,6 +61,6 @@ dependencies {
     implementation 'org.jetbrains:annotations:13.0'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     api project(path: ':library-rdk')
-
+//    implementation 'com.github.sunbx:FoxitCore:v2.0'
 }
 

@@ -26,7 +26,6 @@ import com.foxit.sdk.PDFViewCtrl;
 import com.foxit.sdk.pdf.PDFPage;
 import com.foxit.sdk.pdf.annots.Annot;
 import com.foxit.sdk.pdf.annots.Ink;
-import com.foxit.uiextensions.DocumentManager;
 import com.foxit.uiextensions.UIExtensionsManager;
 import com.foxit.uiextensions.annots.AbstractAnnotHandler;
 import com.foxit.uiextensions.annots.AbstractToolHandler;
@@ -295,20 +294,23 @@ public class InkAnnotHandler extends AbstractAnnotHandler {
                 @Override
                 public void result(Event event, boolean success) {
                     if (success) {
-                        ((UIExtensionsManager)mPdfViewCtrl.getUIExtensionsManager()).getDocumentManager().onAnnotAdded(page, annot);
-                        if (addUndo) {
-                            ((UIExtensionsManager)mPdfViewCtrl.getUIExtensionsManager()).getDocumentManager().addUndoItem(addEvent.mUndoItem);
-                        }
-                        if (mPdfViewCtrl.isPageVisible(pageIndex)) {
-                            RectF pvRect = getBBox(mPdfViewCtrl, annot);
-                            if(pvRect!=null){
-                                final Rect tv_rect1 = new Rect();
-                                pvRect.roundOut(tv_rect1);
-                                mPdfViewCtrl.refresh(pageIndex, tv_rect1);
+                        try{
+                            ((UIExtensionsManager)mPdfViewCtrl.getUIExtensionsManager()).getDocumentManager().onAnnotAdded(page, annot);
+                            if (addUndo) {
+                                ((UIExtensionsManager)mPdfViewCtrl.getUIExtensionsManager()).getDocumentManager().addUndoItem(addEvent.mUndoItem);
                             }
+                            if (mPdfViewCtrl.isPageVisible(pageIndex)) {
+                                RectF pvRect = getBBox(mPdfViewCtrl, annot);
+                                if(pvRect!=null){
+                                    final Rect tv_rect1 = new Rect();
+                                    pvRect.roundOut(tv_rect1);
+                                    mPdfViewCtrl.refresh(pageIndex, tv_rect1);
+                                }
 
+                            }
+                        }catch (Exception e){
+                            e.printStackTrace();
                         }
-
                     }
 
                     if (result != null) {

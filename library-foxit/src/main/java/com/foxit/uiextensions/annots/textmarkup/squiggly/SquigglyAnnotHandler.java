@@ -530,20 +530,20 @@ class SquigglyAnnotHandler implements AnnotHandler {
     public void resetMenuItems(Annot annot) {
         mMenuItems.clear();
 
-        if (((UIExtensionsManager)mPdfViewCtrl.getUIExtensionsManager()).getDocumentManager().canCopy()) {
-            mMenuItems.add(AnnotMenu.AM_BT_COPY);
-        }
-        if (!((UIExtensionsManager)mPdfViewCtrl.getUIExtensionsManager()).getDocumentManager().canAddAnnot()) {
-            mMenuItems.add(AnnotMenu.AM_BT_COMMENT);
-        } else {
-            mMenuItems.add(AnnotMenu.AM_BT_STYLE);
-            mMenuItems.add(AnnotMenu.AM_BT_COMMENT);
-            mMenuItems.add(AnnotMenu.AM_BT_REPLY);
-            mMenuItems.add(AnnotMenu.AM_BT_FLATTEN);
+//        if (((UIExtensionsManager)mPdfViewCtrl.getUIExtensionsManager()).getDocumentManager().canCopy()) {
+//            mMenuItems.add(AnnotMenu.AM_BT_COPY);
+//        }
+//        if (!((UIExtensionsManager)mPdfViewCtrl.getUIExtensionsManager()).getDocumentManager().canAddAnnot()) {
+//            mMenuItems.add(AnnotMenu.AM_BT_COMMENT);
+//        } else {
+//            mMenuItems.add(AnnotMenu.AM_BT_STYLE);
+//            mMenuItems.add(AnnotMenu.AM_BT_COMMENT);
+//            mMenuItems.add(AnnotMenu.AM_BT_REPLY);
+//            mMenuItems.add(AnnotMenu.AM_BT_FLATTEN);
             if (!(AppAnnotUtil.isLocked(annot) || AppAnnotUtil.isReadOnly(annot))) {
                 mMenuItems.add(AnnotMenu.AM_BT_DELETE);
             }
-        }
+//        }
     }
 
     public boolean onKeyDown(int keyCode, KeyEvent event) {

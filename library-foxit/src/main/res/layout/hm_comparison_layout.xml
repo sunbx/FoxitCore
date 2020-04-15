@@ -133,7 +133,6 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:hint="@string/hm_comparison_file_name"
                         android:textColor="@color/ux_color_comparison_filename"
                         android:textSize="26px"/>
 
@@ -189,7 +188,6 @@
                         android:id="@+id/tv_new_file_name"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:hint="@string/hm_comparison_file_name"
                         android:layout_weight="1"
                         android:textColor="@color/ux_color_comparison_filename"
                         android:textSize="26px"/>
